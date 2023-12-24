@@ -1,0 +1,6 @@
+[
+    {"id":1, "fullName":"John Doe", "email":"johndoe@gmail.com", "phoneNo":"0765453754", "password":"johndoe"},
+    {"id":2, "fullName":"James Doe", "email":"jamesdoe@gmail.com", "phoneNo":"0765453759", "password":"jamesdoe"},
+    {"id":3, "fullName":"Peter Kelebu", "email":"peterkelebu@gmail.com", "phoneNo":"0765453764", "password":"peterkelebu"},
+    {"id":4, "fullName":"Amo Tech", "email":"amotech@gmail.com", "phoneNo":"0765453755", "password":"amotech"}
+]
