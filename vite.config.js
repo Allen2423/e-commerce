@@ -10,6 +10,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
   ],
+  base: "/e-commerce",
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
