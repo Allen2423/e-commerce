@@ -3,7 +3,7 @@
         <div class="container flex items-center justify-between">
             <router-link to="index.html">
                 <!-- <img src="../assets/images/logo.svg" alt="Logo" class="w-32"> -->
-            <span Class="text-2xl md:text-3xl font-bold" >MASHAGLOBAL</span>
+            <span Class="text-2xl md:text-3xl font-bold text-black" >MASHAGLOBAL</span>
             </router-link>
             
             <!-- search input  -->
