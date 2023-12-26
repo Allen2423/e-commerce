@@ -151,27 +151,7 @@ const validation = () => {
         message.value = "Sussessfull "
     }
 }
-    // else if (email.value != '') {
-    //     if (!emailPattern.test(email.value)) {
-    //         message.value = "Invalid email";
-    //     }
-    // } else if (phoneNo.value == '') {
-    //     message.value = "Please enter phone number";
-    // } else if (!phoneNumberRegex.test(phoneNo.value)) {
-    //     message.value = "Invalid Phone Number format";
-    // } else if (password.value == '') {
-    //     message.value = "Please enter your password";
-    // } else if (password.value.length < 8) {
-    //     message.value = "Password must be at least 8 characters";
-    // } else if (confimPassword.value == '') {
-    //     message.value = "Please enter confirm password";
-    // } else if (password.value != confimPassword.value) {
-    //     message.value = "Password does not match";
-    // } 
-    // else {
-    //     message.value = "";
-    //     message.value = "Sussessfull "
-    // }
+
 }
 </script>
 

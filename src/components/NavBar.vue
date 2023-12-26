@@ -27,4 +27,5 @@ import { useAppStore } from '../stores/Store';
 const myStore = useAppStore();
 
 const { isLoggedIn } = storeToRefs(myStore);
+
 </script>
