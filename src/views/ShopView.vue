@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- header -->
-        <Header/>
+        <Header />
         <!-- ./header -->
 
         <!-- navbar -->
@@ -265,7 +265,7 @@
                             </div>
                         </form>
                     </div>
-                    
+
 
                     <div class="pt-4">
                         <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">Price</h3>
@@ -279,7 +279,7 @@
                                 placeholder="max">
                         </div>
                     </div>
-                    
+
                     <div class="pt-4">
                         <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">size</h3>
                         <div class="flex items-center gap-2">
@@ -342,11 +342,11 @@
             <!-- products -->
             <div class="col-span-3">
                 <div class="flex items-center mb-4">
-                    <select name="sort" id="sort"
+                    <select name="sort" id="sort" @click="sortProducts" v-model="selectedOrder"
                         class="w-44 text-sm text-gray-600 py-3 px-4 border-gray-300 shadow-sm rounded bg-slate-300 focus:bg-gray-300">
-                        <option value="">Default sorting</option>
-                        <option value="price-low-to-high">Price low to high</option>
-                        <option value="price-high-to-low">Price high to low</option>
+                        <option value="default" selected>Default sorting</option>
+                        <option value="lowToHigh">Price low to high</option>
+                        <option value="highToLow">Price high to low</option>
                     </select>
                     <div class="flex gap-2 ml-auto">
                         <div
@@ -359,11 +359,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- product -->
                 <div class="grid md:grid-cols-3 grid-cols-2 gap-6">
-                    <div v-for="(product, index) of Products" :key="index">
-                        <ProductBox @click="currentProduct(index, product.category)" :imgPath="product.img" :name=product.name :price="product.price" :stock="product.stock" />
+                    <div v-for="(product, index) of getProducts01" :key="index">
+                        <ProductBox @click="currentProduct(index, product.category)" :imgPath="product.img"
+                            :name=product.name :price="product.price" :stock="product.stock" />
                     </div>
                 </div>
             </div>
@@ -392,15 +393,35 @@ import router from "../router";
 import Products from '../Api/Products.json'
 import { useAppStore } from "../stores/Store";
 import { storeToRefs } from "pinia";
+import { ref } from 'vue';
 
 const myStore = useAppStore();
 
-const { selectedProduct } = storeToRefs(myStore);
+const { selectedProduct, getProducts01 } = storeToRefs(myStore);
 
-const currentProduct = (index,category) => {
-    myStore.changeSelectedProduct(index,category);
+const currentProduct = (index, category) => {
+    myStore.changeSelectedProduct(index, category);
     router.push('/productView')
 }
+
+// const selectedOrder = ref('default')
+
+// const sortProducts = () => {
+//     // const sorted = getProducts01.value.slice().sort((a, b) => a.price - b.price)
+//     // console.log('Sorting products'+sorted[0].price)
+//     switch (selectedOrder.value) {
+//         case 'lowToHigh':
+//             return getProducts01.value.slice().sort((a, b) => a.price - b.price);
+//             break;
+//         case 'highToLow':
+//             return getProducts01.value.slice().sort((a, b) => b.price - a.price);
+//             break;
+//         default:
+//             return getProducts01.value.slice();
+//     }
+// }
+
+// console.log("soooooooorted", sortProducts()[0].price);
 </script>
 
 

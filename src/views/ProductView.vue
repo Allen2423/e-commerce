@@ -59,7 +59,7 @@
 
         <!-- breadcrumb -->
         <div class="container py-4 flex items-center gap-3">
-            <router-link to="../index.html" class="text-primary text-base">
+            <router-link to="#" class="text-primary text-base">
                 <i class="fa-solid fa-house"></i>
             </router-link>
             <span class="text-sm text-gray-400">
@@ -72,7 +72,7 @@
         <!-- product-detail -->
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div class="overflow-hidden">
-                <img src="../assets/images/products/Keyboard.jpg" alt="product" class="max-h-[34em]  object-cover w-full">
+                <img src="../assets/images/products/Sofa.jpg" alt="product" class="max-h-[34em]  object-cover w-full">
                 <div class="grid grid-cols-5 gap-4 mt-4">
                     <img src="../assets/images/products/product2.jpg" alt="product2"
                         class="w-full cursor-pointer border border-primary">
@@ -167,7 +167,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <h3 class="text-sm text-gray-800 uppercase mb-1">Quantity</h3>
+                    <h3 class="text-sm text-gray-800 uppercase mb-1">quantity</h3>
                     <div class="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
                         <div @click="substract" class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">-</div>
                         <div class="h-8 w-8 text-base flex items-center justify-center">{{ quantity }}</div>
@@ -272,7 +272,7 @@ import { ref } from 'vue';
 const myStore = useAppStore();
 
 
-const { getSelectedProduct, getCurrentCategory, getIsLoggedIn } = storeToRefs(myStore);
+const { getSelectedProduct, getCurrentCategory, getIsLoggedIn, getProducts01 } = storeToRefs(myStore);
 
 
 const currentProduct = (index, getCurrentCategory) => {
@@ -288,9 +288,13 @@ onMounted(()=>{
 
 const checkLogin = (value) =>{
     if(getIsLoggedIn){
+            getProducts01.value[getSelectedProduct.value].size = size.value;
+            getProducts01.value[getSelectedProduct.value].color = color.value;
+            getProducts01.value[getSelectedProduct.value].quantity = quantity.value;
         if(value == "c"){
             // alert(value)
             myStore.cartUpdate(getSelectedProduct.value);
+console.log("................................"+ getProducts01.value[getSelectedProduct.value].size)
         router.push("/cartView")
         } else {
             router.push("/checkoutView")
@@ -301,17 +305,19 @@ const checkLogin = (value) =>{
 }
 
 
-const size = ref('')
-const color = ref('')
+const size = ref('sm')
+const color = ref('white')
+const quantity = ref(1)
 
-const quantity = ref(0)
+
+console.log("................................"+ getProducts01.value[getSelectedProduct.value].size)
 
 const add = () =>{
- quantity.value++
+    quantity.value++
 }
 
 const substract = () =>{
- quantity.value--
+    quantity.value--
 }
 
 </script>

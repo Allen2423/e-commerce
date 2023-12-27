@@ -14,9 +14,11 @@
         <div class="  w-full  overflow-x-auto">
             <table class="table-auto w-full text-left text-gray-600 text-sm mb-9 min-w-[800px]">
                 <thead class="grid h-16 text-xl mb-4 rounded-xl shadow-md  bg-blue-500 ">
-                    <tr class='grid grid-cols-6'>
+                    <tr class='grid grid-cols-8'>
                         <th class="py-2 pl-4 flex items-center text-white text-left">Product</th>
                         <th class="py-2 pl-4 flex items-center text-white text-left">Name</th>
+                        <th class="py-2 pl-4 flex items-center text-white text-left ">size</th>
+                        <th class="py-2 pl-4 flex items-center text-white text-left">Color</th>
                         <th class="py-2 pl-4 flex items-center text-white text-left ">Unit Price</th>
                         <th class="py-2 pl-4 flex items-center text-white text-left">Quantity</th>
                         <th class="py-2 pl-4 flex items-center text-white text-left">Total Price</th>
@@ -25,18 +27,20 @@
                 </thead>
                 <!-- v-for="n of 4" :key="n" -->
                 <tbody>
-                    <tr class='mb-4 text-lg grid grid-cols-6 shadow-md  rounded-lg overflow-hidden  bg-white' v-for="(cart, index) in getCart" :key="cart">
+                    <tr class='mb-4 text-lg grid grid-cols-8 shadow-md  rounded-lg overflow-hidden  bg-white' v-for="(cart, index) in getCart" :key="cart">
                         <td class="max-h-40 w-40 overflow-hidden group">
                             <div class="overflow-hidden">
                                 <img src="../assets/images/products/Headset.jpg" alt="product 1" class="w-full object-cover max-h-32 ">
                             </div>
                         </td>
                         <td class="px-8 py-3 flex items-center ">
-                            <h1 class="font-extrabold text-xl mb-2">{{ Products[cart].name }}</h1>
+                            <h1 class="font-extrabold text-xl mb-2">{{ getProducts01[cart].name }}</h1>
                         </td>
-                        <td class="px-8 py-3 flex items-center ">Tsh {{ Products[cart].price }}</td>
-                        <td class="px-8 py-3 flex items-center ">{{ Products[cart].quantity }}</td>
-                        <td class="px-8 py-3 flex items-center ">Tsh {{ Products[cart].quantity * Products[cart].price}}</td>
+                        <td class="px-8 py-3 flex items-center ">{{ getProducts01[cart].size }}</td>
+                        <td class="px-8 py-3 flex items-center ">{{ getProducts01[cart].color }}</td>
+                        <td class="px-8 py-3 flex items-center ">Tsh {{ getProducts01[cart].price }}</td>
+                        <td class="px-8 py-3 flex items-center ">{{ getProducts01[cart].quantity }}</td>
+                        <td class="px-8 py-3 flex items-center ">Tsh {{ getProducts01[cart].quantity * getProducts01[cart].price}}</td>
                         <td class="px-8 py-3 flex items-center ">
                             <!-- <input class="h-6 w-6" type="checkbox"> -->
                             <button @click="deleteCartItem(index)" class="ml-2 bg-red-500 text-white px-3 py-2 rounded-lg">Delete</button>
@@ -94,14 +98,13 @@ import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import Header from '../components/Header.vue';
 import Search from '../components/Search.vue';
-import Products from '../Api/Products.json';
 import { useAppStore } from '../stores/Store';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 
 const myStore = useAppStore();
-const { selectedProduct, getCart} = storeToRefs(myStore);
+const { selectedProduct, getCart, getProducts01} = storeToRefs(myStore);
 
 var itemsPrice = ref([])
 var itemsTotalPrice = ref(0)
@@ -111,7 +114,7 @@ const deleteCartItem = (index) => {
 }
 
 for(const item of getCart.value) {
-    itemsPrice.value.push(Products[item].quantity * Products[item].price)
+    itemsPrice.value.push(getProducts01.value[item].price * getProducts01.value[item].quantity)
 }
 
 for(var i = 0; i < itemsPrice.value.length; i++) {

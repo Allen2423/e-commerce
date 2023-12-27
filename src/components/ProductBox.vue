@@ -3,7 +3,7 @@
         <div >
         <div  class="relative bg-white shadow-sm  rounded overflow-hidden group flex flex-col">
             <div class="relative overflow-hidden">
-                <img src="../assets/images/products/CircleFood.jpg" alt="product 1" class="w-full object-cover h-[10em] md:h-[18em]">
+                <img :src="getImgPath(imgPath)" alt="product 1" class="w-full object-cover h-[10em] md:h-[18em]">
                 <div class="absolute inset-0 bg-blue-500 bg-opacity-5 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
                 </div>
             </div>
@@ -29,12 +29,17 @@
 <script setup>
 import { ref } from "vue";
 
-defineProps({
-    imgPath:"../assets/images/products/officeShoes2.jpg",
+const props = defineProps({
+    imgPath: String,
     name:"",
     price:"",
     stock:""
 })
 
-const imgPath1 = ref("../assets/images/products/CameraNikon.jpg")
+// const imgPath = "CameraNikon.jpg";
+
+const getImgPath = (path)=>{
+    return new URL('../assets/images/products/'+path, import.meta.url)
+}
+
 </script>

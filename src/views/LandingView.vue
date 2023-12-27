@@ -123,7 +123,7 @@
             
             
             <!-- product -->
-            <div v-for="(product, index) of Products" :key="index">
+            <div v-for="(product, index) of getProducts01" :key="index">
                 <ProductBox @click="currentProduct(index,product.category)" :imgPath="product.img" :name=product.name :price="product.price" :stock="product.stock"/>
             </div>
             <!-- product end -->
@@ -152,7 +152,7 @@ import { useAppStore } from '../stores/Store';
 import { storeToRefs } from 'pinia';
 
 const myStore = useAppStore();
-const { getSelectedProduct} = storeToRefs(myStore);
+const { getSelectedProduct, getProducts01} = storeToRefs(myStore);
 
 const currentProduct = (index,category) => {
     myStore.changeSelectedProduct(index,category);
