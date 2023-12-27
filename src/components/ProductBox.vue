@@ -30,13 +30,13 @@
 import { ref } from "vue";
 
 const props = defineProps({
-    imgPath: String,
+    imgPath1: String,
     name:"",
     price:"",
     stock:""
 })
 
-// const imgPath = "CameraNikon.jpg";
+ const imgPath = "CameraNikon.jpg";
 
 const getImgPath = (path)=>{
     return new URL('../assets/images/products/'+path, import.meta.url)
