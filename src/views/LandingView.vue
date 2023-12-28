@@ -87,29 +87,29 @@
         <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">shop by category</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/category/category-1.jpg" alt="category 1" class="w-full">
-                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40  flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Nguo</router-link>
+                <img src="../assets/images/products/shoes.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
+                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40  flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Raba</router-link>
             </div>
             <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/category/category-2.jpg" alt="category 1" class="w-full">
+                <img src="../assets/images/products/pc.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
                 <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Vifaa vya Electronic</router-link>
             </div>
             <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/category/category-3.jpg" alt="category 1" class="w-full">
-                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Vipodozi</router-link>
+                <img src="../assets/images/products/OfficeShoes2.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
+                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Viatu Vya Ofisini</router-link>
             </div>
             <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/category/category-4.jpg" alt="category 1" class="w-full">
-                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Sofa</router-link>
+                <img src="../assets/images/products/Sofa.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
+                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Vifaa Vya Nyumbani</router-link>
             </div>
             <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/category/category-5.jpg" alt="category 1" class="w-full">
-                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Living Room</router-link>
+                <img src="../assets/images/products/pcBag.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
+                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Bags</router-link>
             </div>
             <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/category/category-6.jpg" alt="category 1" class="w-full">
+                <img src="../assets/images/products/watch3.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
                 <router-link to="#"
-                    class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Kitchen</router-link>
+                    class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Jewllery</router-link>
             </div>
         </div>
     </div>

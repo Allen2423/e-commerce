@@ -4,7 +4,7 @@
             <div class="flex items-center justify-between flex-grow md:pl-12 py-4 ">
                 <div class="flex items-center space-x-6 capitalize text-white text-xl">
                     <router-link to="/" class=" hover:text-gray-300 transition">Home</router-link>
-                    <router-link to="/shopView" class=" hover:text-gray-300 transition">Shop</router-link>
+                    <!-- <router-link to="/shopView" class=" hover:text-gray-300 transition">Shop</router-link> -->
                     <router-link v-if="isLoggedIn" to="/orderView" class=" hover:text-gray-300 transition">My Order</router-link>
                 </div>
                 <div>
@@ -13,7 +13,7 @@
                         <span class="text-white text-xl mx-2">/</span>
                         <router-link to="registerView" class="text-white hover:text-gray-300 text-xl  transition ">Register</router-link>
                     </div>
-                    <router-link v-if="isLoggedIn" to="loginView" class="text-white hover:text-gray-300 text-xl  transition ">Logout</router-link>
+                    <div @click="logout" v-if="isLoggedIn" class="text-white hover:text-gray-300 text-xl  transition ">Logout</div>
                 </div>
             </div>
         </div>
@@ -27,5 +27,7 @@ import { useAppStore } from '../stores/Store';
 const myStore = useAppStore();
 
 const { isLoggedIn } = storeToRefs(myStore);
-
+const logout = () => {
+    myStore.logout();
+}
 </script>

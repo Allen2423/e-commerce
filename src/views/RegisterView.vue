@@ -18,8 +18,14 @@
                 <form @submit.prevent autocomplete="off">
                     <div class="space-y-2">
                         <div>
-                            <label for="name" class="text-gray-600 mb-2 block">Full Name</label>
-                            <input type="text" v-model="fullName" id="name"
+                            <label for="name" class="text-gray-600 mb-2 block">First Name</label>
+                            <input type="text" v-model="fName" id="name"
+                                class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+                                placeholder="fulan fulana">
+                        </div>
+                        <div>
+                            <label for="name" class="text-gray-600 mb-2 block">Last Name</label>
+                            <input type="text" v-model="lName" id="name"
                                 class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                                 placeholder="fulan fulana">
                         </div>
@@ -86,21 +92,31 @@ import Header from "../components/Header.vue";
 import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
 import { ref } from "vue";
+import { useAppStore } from "../stores/Store";
+import { storeToRefs } from "pinia";
+import router from "../router";
+const myStore = useAppStore();
 
+
+const { getRegisterUser, getLoggedinUser } = storeToRefs(myStore);
 
 const message = ref("");
 const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const phoneNumberRegex = /^(\+?255|0)\d{9}$/;
 
-const fullName = ref("");
+const fName = ref("");
+const lName = ref("");
 const email = ref("");
 const phoneNo = ref("");
 const password = ref("");
 const confimPassword = ref("");
 
 const validation = () => {
-    if (fullName.value == '') {
-        message.value = "Please enter a full name";
+    if (fName.value == '') {
+        message.value = "Please enter a first name";
+    } 
+    else if (lName.value == '') {
+        message.value = "Please enter a Last name";
     } else if (email.value != '') {
         if (!emailPattern.test(email.value)) {
             message.value = "Invalid email";
@@ -118,8 +134,18 @@ const validation = () => {
     } else if (password.value != confimPassword.value) {
         message.value = "Password does not match";
     } else {
-        message.value = "";
-        message.value = "Sussessfull "
+      alert(message.value)
+      
+     const formData = {  fname :fName.value, lname :lName.value, email :email.value, phoneNo: phoneNo.value, password: password.value}
+     console.log("0000000000000000000000000000"+getRegisterUser.value[0].name)
+        myStore.updateRegisterUser(formData);
+        // getRegisterUser.value[0].fname = fName.value;
+        // getRegisterUser.value[0].lname = lName.value;
+        // getRegisterUser.value[0].email = email.value;
+        // getRegisterUser.value[0].phoneNo = phoneNo.value;
+        // getRegisterUser.value[0].password = password.value;
+        // myStore.updateLoggedInUser(5);
+        router.push("/loginView");
     }
 }
 </script>

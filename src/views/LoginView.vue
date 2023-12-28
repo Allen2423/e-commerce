@@ -18,8 +18,8 @@
                 <form @submit.prevent="validation" autocomplete="off">
                     <div class="space-y-2">
                         <div>
-                            <label for="email" class="text-gray-600 mb-2 block">Email address</label>
-                            <input type="email" v-model="email" id="email"
+                            <label for="phoneNo" class="text-gray-600 mb-2 block">Phone Number</label>
+                            <input type="text" v-model="phoneNo" id="phoneNo"
                                 class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                                 placeholder="youremail.@domain.com">
                         </div>
@@ -69,25 +69,37 @@ import Header from "../components/Header.vue";
 import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.vue";
 import { ref } from "vue";
+import { useAppStore } from "../stores/Store";
+import { storeToRefs } from "pinia";
+import router from "../router";
+const myStore = useAppStore();
+
+
+const { getRegisterUser, getLoggedinUser,  } = storeToRefs(myStore);
+
 
 const message = ref("");
-const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const email = ref("");
+// const phoneNumberRegex = /^(\+?255|0)\d{9}$/;
+const phoneNo = ref("");
 const password = ref("");
 
 const validation = () => {
-    if (email.value == '') {
-        message.value = "Please enter your email";
-    }
-    else if (!emailPattern.test(email.value)) {
-        message.value = "Invalid email";
-    } else if (password.value == '') {
+    if (phoneNo.value == '') {
+        message.value = "Please enter phone number";
+     } 
+    //  else if (!phoneNumberRegex.test(phoneNo.value)) {
+    //     message.value = "Invalid Phone Number format";
+    // } 
+    else if (password.value == '') {
         message.value = "Please enter your password";
     }else if (password.value.length < 8) {
         message.value = "Password must be at least 8 characters";
     } else {
-        message.value = "";
-        message.value = "Sussessfull "
+        if(getRegisterUser.value[0].phoneNo == Number(phoneNo.value) && getRegisterUser.value[0].password == password.value){
+            localStorage.setItem("loggedInUser",phoneNo.value)
+            myStore.login(phoneNo.value,true)
+            router.push("/orderView");
+        }
     }
 }
 </script>

@@ -7,7 +7,7 @@
                 <div class="absolute inset-0 bg-blue-500 bg-opacity-5 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
                 </div>
             </div>
-            <div class="flex-grow"> <!-- Add flex-grow class to make this div grow and push the next div to the bottom -->
+            <div class="flex-gro"> <!-- Add flex-grow class to make this div grow and push the next div to the bottom -->
                 <div class="pt-4 pb-3 px-3 md:px-4">
                     <router-link to="productView">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">{{ name }}</h4>
@@ -18,9 +18,10 @@
                     </div>
                 </div>
             </div>
-            <!-- <router-link @click="currentProduct(index,product.category)" to="productView" class="block w-full py-2 text-center text-white bg-blue-500 border border-blue-600 rounded-b-md mt-auto hover:bg-blue-500 transition">
+            <!-- <div class="block w-full h-9 border py-2 text-center text-white  rounded-b-md mt-auto  transition">kkk</div> -->
+            <router-link @click="currentProduct(index,product.category)" to="productView" class="block w-full py-2 text-center text-white bg-blue-500 border border-blue-600 rounded-b-md mt-auto hover:bg-blue-500 transition">
                 Add to cart
-            </router-link> -->
+            </router-link>
         </div>
     </div>
     </div>

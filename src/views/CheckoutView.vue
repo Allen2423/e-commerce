@@ -121,10 +121,11 @@ import Products from '../Api/Products.json'
 import { useAppStore } from "../stores/Store";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
+import router from "../router";
 
 const myStore = useAppStore();
 
-const { getSelectedProduct } = storeToRefs(myStore);
+const { getSelectedProduct, getCart, getOrder } = storeToRefs(myStore);
 
 const message = ref("");
 
@@ -171,7 +172,8 @@ const validation = () => {
   else if (payment.value === '') {
     message.value = 'Please enter select payment';
   }else{
-    message.value =""
+    myStore.updateOrder(getCart.value)
+    router.push("/orderView")
   }
 }
 </script>

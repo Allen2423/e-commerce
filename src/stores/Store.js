@@ -2,11 +2,16 @@ import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
     state: () => ({
-        isLoggedIn: true,
+        isLoggedIn: false,
         token: '',
         selectedProduct: 0,
         currentCategory:'',
+        loggedInUser:null,
+        orders: [],
         cart:[],
+        registerUser: [
+          {  fname :"Allen", lname:"Mosha", email: "allenmosha@gmail.com", phoneNo: 765453755, password: "12345678",}
+        ],
         products01:[
             {id:1, name:"Italian sofa", price: 20000.00, quantity:4, img: "Sofa.jpg", description:"This is a marvelouse Italian Sofa Good for block house", category: "home", brand:"Supreme", stock:50, size: '', color:''},
             {id:2, name:"Men perfume", price: 40000.00, quantity:1, img: "perfume.jpg", description:"Long last Men perfumes", category: "perfume", brand:"CR7", stock:90, size: '', color:''},
@@ -33,8 +38,9 @@ export const useAppStore = defineStore('app', {
             {id:23, name:"Chair", price: 120000.00, quantity:6, img: "dhChairs.jpg", description:"lorem ipsum dolor sit amet, consectetur adip", category: "home", brand:"Ibra Furniture", stock:56, size: '', color:''},
             {id:24, name:"Headset", price: 550000.00, quantity:2, img: "Headset.jpg", description:"lorem ipsum dolor sit amet, consectetur adip", category: "electronic", brand:"Sony", stock:45, size: '', color:''},
             {id:25, name:"Slim Laptop", price: 507000.00, quantity:2, img: "pc.jpg", description:"lorem ipsum dolor sit amet, consectetur adip", category: "electronic", brand:"hp", stock:23, size: '', color:''},
-        ]
+        ],
       }),
+
       getters: {
         isLoggedInAndHasToken({ isLoggedIn, token }) {
           return isLoggedIn && token.length
@@ -44,16 +50,20 @@ export const useAppStore = defineStore('app', {
         getSelectedProduct: (state) => state.selectedProduct,
         getCurrentCategory: (state) => state.currentCategory,
         getCart: (state) => state.cart,
-        getProducts01: (sate) => sate.products01
+        getProducts01: (sate) => sate.products01,
+        getRegisterUser:(state) => state.registerUser,
+        getLoggedinUser:(state) => state.loggedInUser,
+        getOrder: (state) => state.orders,
         
       },
       actions: {
-        login() {
-          this.isLoggedIn = true
-          this.token = 'token'
+        login(token, value) {
+          this.isLoggedIn = value;
+          this.token = token;
         },
         logout() {
-          this.isLoggedIn = false
+          this.isLoggedIn = false;
+          localStorage.removeItem('loggedInUser');
         },
         changeSelectedProduct(index, category){
             this.selectedProduct = index;
@@ -61,6 +71,12 @@ export const useAppStore = defineStore('app', {
         },
         cartUpdate(value) {
           this.cart.push(value);
+        },
+        updateOrder(value) {
+          this.orders.push(value);
+        },
+        updateRegisterUser(value) {
+          this.registerUser.push(value);
         }
       }
 })

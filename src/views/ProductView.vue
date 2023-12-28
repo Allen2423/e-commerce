@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- header -->
-        <Header/>
+        <Header />
         <!-- ./header -->
 
         <!-- navbar -->
@@ -65,47 +65,31 @@
             <span class="text-sm text-gray-400">
                 <i class="fa-solid fa-chevron-right"></i>
             </span>
-            <p class="text-gray-600 font-medium">Product</p>
+            <p class="text-gray-600 font-medium">Product Details</p>
         </div>
         <!-- ./breadcrumb -->
 
         <!-- product-detail -->
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div class="overflow-hidden">
-                <img src="../assets/images/products/Sofa.jpg" alt="product" class="max-h-[34em]  object-cover w-full">
-                <div class="grid grid-cols-5 gap-4 mt-4">
-                    <img src="../assets/images/products/product2.jpg" alt="product2"
-                        class="w-full cursor-pointer border border-primary">
-                    <img src="../assets/images/products/product3.jpg" alt="product2" class="w-full cursor-pointer border">
-                    <img src="../assets/images/products/product4.jpg" alt="product2" class="w-full cursor-pointer border">
-                    <img src="../assets/images/products/product5.jpg" alt="product2" class="w-full cursor-pointer border">
-                    <img src="../assets/images/products/product6.jpg" alt="product2" class="w-full cursor-pointer border">
-                </div>
+                <img :src="getImgPath()" class="max-h-[34em]  object-cover w-full">
             </div>
 
             <div>
-                <h2 class="text-3xl font-medium uppercase mb-2">{{ Products[getSelectedProduct].name }}</h2>
-                <div class="flex items-center mb-4">
-                    <div class="flex gap-1 text-sm text-yellow-400">
-                        <span><i class="fa-solid fa-star"></i></span>
-                        <span><i class="fa-solid fa-star"></i></span>
-                        <span><i class="fa-solid fa-star"></i></span>
-                        <span><i class="fa-solid fa-star"></i></span>
-                        <span><i class="fa-solid fa-star"></i></span>
-                    </div>
-                </div>
+                <h2 class="text-3xl font-medium uppercase mb-2">{{ getProducts01[getSelectedProduct].name }}</h2>
                 <div class="space-y-2">
                     <p class="text-gray-800 font-semibold space-x-2">
                         <span>Availability: </span>
-                        <span class="text-green-600">{{ Products[getSelectedProduct].stock }}</span>
+                        <span class="text-green-600">{{ getProducts01[getSelectedProduct].stock }}</span>
                     </p>
                     <p class="space-x-2">
                         <span class="text-gray-800 font-semibold">Category: </span>
-                        <span class="text-gray-600">{{ Products[getSelectedProduct].category }}</span>
+                        <span class="text-gray-600">{{ getProducts01[getSelectedProduct].category }}</span>
                     </p>
                 </div>
                 <div class="flex items-baseline mb-1 space-x-2 font-roboto mt-4">
-                    <p class="text-xl text-primary font-semibold">{{ Products[getSelectedProduct].price }}</p>
+                    <span class="text-gray-800 font-semibold">Price: </span>
+                    <p class="text-xl text-primary font-semibold">Tsh {{ getProducts01[getSelectedProduct].price }}</p>
                 </div>
 
                 <!-- <p class="mt-4 text-gray-600">{{ Products[getSelectedProduct].description }}</p> -->
@@ -113,27 +97,27 @@
                 <div class="pt-4">
                     <h3 class="text-sm text-gray-800 uppercase mb-1">Size</h3>
                     <div class="flex items-center gap-2">
-                        <div class="size-selector">
+                        <div class="size-selector border-1 hover:border-blue-500">
                             <input type="radio" v-model="size" id="size-xs" value="xs" class="hidden">
                             <label for="size-xs"
                                 class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">XS</label>
                         </div>
-                        <div class="size-selector">
+                        <div class="size-selector border-1 hover:border-blue-500">
                             <input type="radio" v-model="size" id="size-sm" value="sm" class="hidden">
                             <label for="size-sm"
                                 class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">S</label>
                         </div>
-                        <div class="size-selector">
+                        <div class="size-selector border-1 hover:border-blue-500">
                             <input type="radio" v-model="size" id="size-m" value="m" class="hidden">
                             <label for="size-m"
                                 class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">M</label>
                         </div>
-                        <div class="size-selector">
+                        <div class="size-selector border-1 hover:border-blue-500">
                             <input type="radio" v-model="size" id="size-l" value="l" class="hidden">
                             <label for="size-l"
                                 class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">L</label>
                         </div>
-                        <div class="size-selector">
+                        <div class="size-selector border-1 hover:border-blue-500">
                             <input type="radio" v-model="size" id="size-xl" value="xl" class="hidden">
                             <label for="size-xl"
                                 class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">XL</label>
@@ -142,21 +126,21 @@
                 </div>
 
                 <div class="pt-4">
-                    <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">Color {{ color }}</h3>
+                    <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">Color</h3>
                     <div class="flex items-center gap-2">
-                        <div class="color-selector">
+                        <div class="color-selector border-2 hover:border-blue-500">
                             <input type="radio" v-model="color" id="red" value="red" class="hidden">
                             <label for="red"
-                                class="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
+                                class="border rounded-sm h-6 w-6 hover:border-blue-500  cursor-pointer shadow-sm block"
                                 style="background-color: #fc3d57;"></label>
                         </div>
-                        <div class="color-selector">
+                        <div class="color-selector  border-2 hover:border-blue-500">
                             <input type="radio" v-model="color" id="black" value="black" class="hidden">
                             <label for="black"
                                 class="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
                                 style="background-color: #000;"></label>
                         </div>
-                        <div class="color-selector">
+                        <div class="color-selector border-2 hover:border-blue-500">
                             <input type="radio" v-model="color" id="white" value="white" class="hidden">
                             <label for="white"
                                 class="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
@@ -169,9 +153,11 @@
                 <div class="mt-4">
                     <h3 class="text-sm text-gray-800 uppercase mb-1">quantity</h3>
                     <div class="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
-                        <div @click="substract" class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">-</div>
+                        <div @click="substract"
+                            class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">-</div>
                         <div class="h-8 w-8 text-base flex items-center justify-center">{{ quantity }}</div>
-                        <div @click="add" class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">+</div>
+                        <div @click="add"
+                            class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">+</div>
                     </div>
                 </div>
 
@@ -209,23 +195,8 @@
             <h3 class="border-b border-gray-200 font-roboto text-gray-800 pb-3 font-medium">Product details</h3>
             <div class="w-full md:w-3/5 pt-6">
                 <div class="text-gray-600">
-                    <p>{{ Products[getSelectedProduct].description }}</p>
+                    <p>{{ getProducts01[getSelectedProduct].description }}</p>
                 </div>
-
-                <!-- <table class="table-auto w-full text-left text-gray-600 text-sm mt-6">
-                    <tr>
-                        <th class="py-2 px-4 border border-gray-300 w-40 font-medium">Color</th>
-                        <th class="py-2 px-4 border border-gray-300 ">Blank, Brown, Red</th>
-                    </tr>
-                    <tr>
-                        <th class="py-2 px-4 border border-gray-300 w-40 font-medium">Material</th>
-                        <th class="py-2 px-4 border border-gray-300 ">Latex</th>
-                    </tr>
-                    <tr>
-                        <th class="py-2 px-4 border border-gray-300 w-40 font-medium">Weight</th>
-                        <th class="py-2 px-4 border border-gray-300 ">55kg</th>
-                    </tr>
-                </table> -->
             </div>
         </div>
         <!-- ./description -->
@@ -234,23 +205,19 @@
         <div class="container pb-16">
             <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">Related products</h2>
             <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
-                
+
                 <!-- product -->
                 <div v-for="(product, index) of related" :key="index">
-                    <ProductBox @click="currentProduct(index, product.getCurrentCategory)" :imgPath="product.img" :name=product.name :price="product.price" :stock="product.stock" />
+                    <ProductBox @click="currentProduct(index, product.getCurrentCategory)" :imgPath="product.img"
+                        :name=product.name :price="product.price" :stock="product.stock" />
                 </div>
                 <!-- product end -->
-            
+
             </div>
         </div>
-<!--     
-        <div v-for="p of Profile" :key="p">
-            <p>{{ p.fullName }}</p>
-        </div>
-     -->
     </div>
     <!-- ./related product -->
-    
+
     <!-- footer -->
     <Footer />
     <!-- footer end -->
@@ -260,10 +227,7 @@
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import Header from '../components/Header.vue';
-import Search from '../components/Search.vue';
-import Products from '../Api/Products.json';
 import router from '../router';
-import Profile from '../Api/Profile.json';
 import ProductBox from '../components/ProductBox.vue';
 import { useAppStore } from "../stores/Store";
 import { storeToRefs } from "pinia";
@@ -280,22 +244,21 @@ const currentProduct = (index, getCurrentCategory) => {
 }
 
 //  filtering products based on the current getCurrentCategory
-const related = Products.filter(p => p.category == getCurrentCategory.value)
+const related = getProducts01.value.filter(p => p.category == getCurrentCategory.value)
 
-onMounted(()=>{
+onMounted(() => {
     myStore.getCart
 })
 
-const checkLogin = (value) =>{
-    if(getIsLoggedIn){
-            getProducts01.value[getSelectedProduct.value].size = size.value;
-            getProducts01.value[getSelectedProduct.value].color = color.value;
-            getProducts01.value[getSelectedProduct.value].quantity = quantity.value;
-        if(value == "c"){
+const checkLogin = (value) => {
+    if (getIsLoggedIn) {
+        getProducts01.value[getSelectedProduct.value].size = size.value;
+        getProducts01.value[getSelectedProduct.value].color = color.value;
+        getProducts01.value[getSelectedProduct.value].quantity = quantity.value;
+        if (value == "c") {
             // alert(value)
             myStore.cartUpdate(getSelectedProduct.value);
-console.log("................................"+ getProducts01.value[getSelectedProduct.value].size)
-        router.push("/cartView")
+            router.push("/cartView")
         } else {
             router.push("/checkoutView")
         }
@@ -309,15 +272,20 @@ const size = ref('sm')
 const color = ref('white')
 const quantity = ref(1)
 
-
-console.log("................................"+ getProducts01.value[getSelectedProduct.value].size)
-
-const add = () =>{
+const add = () => {
     quantity.value++
 }
 
-const substract = () =>{
+const substract = () => {
     quantity.value--
 }
+
+// console.log('==================='+getProducts01.value[getSelectedProduct.value].img)
+// const imgPath = "CameraNikon.jpg";
+
+const getImgPath = () => {
+    return new URL('../assets/images/products/' + getProducts01.value[getSelectedProduct.value].img, import.meta.url)
+}
+
 
 </script>

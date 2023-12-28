@@ -37,35 +37,7 @@
                     </span>
                     My order history
                 </router-link>
-                <router-link to="#" class="relative hover:text-primary block capitalize transition">
-                    My returns
-                </router-link>
-                <router-link to="#" class="relative hover:text-primary block capitalize transition">
-                    My Cancellations
-                </router-link>
             </div>
-
-            <div  class="space-y-1 pl-8 pt-4">
-                <router-link to="#" class="relative hover:text-primary block font-medium capitalize transition">
-                    <span  class="absolute -left-8 top-0 text-base">
-                        <i  class="fa-regular fa-credit-card"></i>
-                    </span>
-                    Payment methods
-                </router-link>
-                <router-link to="#" class="relative hover:text-primary block capitalize transition">
-                    voucher
-                </router-link>
-            </div>
-
-            <div  class="space-y-1 pl-8 pt-4">
-                <router-link to="#" class="relative hover:text-primary block font-medium capitalize transition">
-                    <span  class="absolute -left-8 top-0 text-base">
-                        <i  class="fa-regular fa-arrow-right-from-bracket"></i>
-                    </span>
-                    Logout
-                </router-link>
-            </div>
-
         </div>
     </div>
 </template>

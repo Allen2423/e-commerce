@@ -17,19 +17,6 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="birthday">Birthday</label>
-                            <input type="date" name="birthday" id="birthday" class="w-[100%] input-box bg-slate-300 py-3 rounded px-2" >
-                        </div>
-                        <div>
-                            <label for="gender">Gender</label>
-                            <select name="gender" id="gender" class="input-box bg-slate-300 rounded py-3 px-2 w-[100%]">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div >
                             <label for="email">Email Address</label>
                             <input type="email" name="email" id="email" class="w-[100%] bg-slate-300 py-3 rounded px-2" placeholder="Email">

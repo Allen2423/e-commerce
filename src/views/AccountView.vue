@@ -27,7 +27,7 @@
             <!-- ./sidebar -->
     
             <!-- info -->
-            <div class="grid col-span-12 md:col-span-8 lg:col-span-9 ">
+            <div class="grid col-span-12 md:col-span-8 lg:col-span-8 ">
                 <RouterView/>
             </div>
             <!-- ./info -->
