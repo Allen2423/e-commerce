@@ -37,7 +37,7 @@ const props = defineProps({
     stock:""
 })
 
-// const imgPath = "CameraNikon.jpg";
+ // const imgPath = "CameraNikon.jpg";
 
 const getImgPath = (path)=>{
     return new URL('../assets/images/products/'+path, import.meta.url)
