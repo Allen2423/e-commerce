@@ -55,9 +55,9 @@
 
 
         <!-- footer -->
-        <div class="absolute w-full bottom-0">
+        <!-- <div class="absolute w-full bottom-0"> -->
             <Footer />
-        </div>
+        <!-- </div> -->
         <!-- footer end -->
 
     </div>
@@ -98,7 +98,7 @@ const validation = () => {
         if(getRegisterUser.value[0].phoneNo == Number(phoneNo.value) && getRegisterUser.value[0].password == password.value){
             localStorage.setItem("loggedInUser",phoneNo.value)
             myStore.login(phoneNo.value,true)
-            router.push("/orderView");
+            // router.push("/orderView");
         }
     }
 }

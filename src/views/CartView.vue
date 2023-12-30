@@ -123,6 +123,12 @@ for(var i = 0; i < itemsPrice.value.length; i++) {
 onMounted(()=>{
     myStore.getCart
 })
+
+for(var i of getCart.value) {
+
+}
+
+
 </script>
 
 <style  scoped></style>

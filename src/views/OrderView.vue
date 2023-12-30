@@ -12,7 +12,7 @@
         <div class="container    mt-6">
             <span class="text-xl font-bold">My Orders</span>
             <div class="w-full overflow-x-auto">
-                <table class="mt-3 rounded-lg  min-w-[1050px] md:min-w-[1000px] lg:min-w-[800px]">
+                <table class="mt-3 rounded-lg w-full min-w-[1050px] md:min-w-[1000px] lg:min-w-[800px]">
                     <thead class="grid h-16 text-xl mb-4 rounded-xl shadow-md  bg-blue-500 ">
                         <tr class='grid grid-cols-8'>
                             <th class="py-2 pl-4 flex items-center  text-white text-left">Product</th>

@@ -7,6 +7,7 @@ export const useAppStore = defineStore('app', {
         selectedProduct: 0,
         currentCategory:'',
         loggedInUser:null,
+        filterCategory:null,
         orders: [],
         cart:[],
         registerUser: [
@@ -54,6 +55,7 @@ export const useAppStore = defineStore('app', {
         getRegisterUser:(state) => state.registerUser,
         getLoggedinUser:(state) => state.loggedInUser,
         getOrder: (state) => state.orders,
+        getFilterCategory: (state) => state.filterCategory
         
       },
       actions: {

@@ -26,7 +26,7 @@ import { useAppStore } from '../stores/Store';
 
 const myStore = useAppStore();
 
-const { isLoggedIn } = storeToRefs(myStore);
+const isLoggedIn  = localStorage.getItem("loggedInUser");
 const logout = () => {
     myStore.logout();
 }

@@ -16,11 +16,6 @@ const router = createRouter({
       component: () => import('../views/ProductView.vue')
     },
     {
-      path: '/shopView',
-      name: 'Shop',
-      component: () => import('../views/ShopView.vue')
-    },
-    {
       path: '/registerView',
       name: 'Register',
       component: () => import('../views/RegisterView.vue')
@@ -33,7 +28,10 @@ const router = createRouter({
     {
       path: '/checkoutView',
       name: 'Checkout',
-      component: () => import('../views/CheckoutView.vue')
+      component: () => import('../views/CheckoutView.vue'),
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/accountView',
@@ -43,12 +41,26 @@ const router = createRouter({
         {
           path: '/accountView/',
           name: 'Manage Account',
-          component: () => import('../components/ManageAccount.vue')
+          component: () => import('../components/ManageAccount.vue'),
+          meta:{
+            requiresAuth: true
+          }
         },
         {
           path: '/accountView/profileView',
           name: 'Profile',
-          component: () => import('../components/ProfileView.vue')
+          component: () => import('../components/ProfileView.vue'),
+          meta:{
+            requiresAuth: true
+          }
+        },
+        {
+          path: '/accountView/Address',
+          name: 'Address',
+          component: () => import('../components/Address.vue'),
+          meta:{
+            requiresAuth: true
+          }
         },
       ]
     },
@@ -60,9 +72,22 @@ const router = createRouter({
     {
       path: '/orderView',
       name: 'Order',
-      component: () => import('../views/OrderView.vue')
+      component: () => import('../views/OrderView.vue'),
+      meta:{
+        requiresAuth: true
+      }
     },
   ]
 })
+router.beforeEach((to, from, next) => {
+const isAuthenticated = localStorage.getItem('loggedInUser');
+
+if (to.meta.requiresAuth && !isAuthenticated) {
+  next('/loginView');
+} else {
+  next();
+}
+  
+});
 
 export default router

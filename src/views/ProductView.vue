@@ -45,7 +45,7 @@
     
                 <div class="flex items-center justify-between flex-grow pl-12">
                     <div class="flex items-center space-x-6 capitalize">
-                        <router-link to="../index.html" class="text-gray-200 hover:text-white transition">Home</router-link>
+                        <router-link to="../" class="text-gray-200 hover:text-white transition">Home</router-link>
                         <router-link to="pages/shop.html" class="text-gray-200 hover:text-white transition">Shop</router-link>
                         <router-link to="#" class="text-gray-200 hover:text-white transition">About us</router-link>
                         <router-link to="#" class="text-gray-200 hover:text-white transition">Contact us</router-link>
@@ -76,20 +76,20 @@
             </div>
 
             <div>
-                <h2 class="text-3xl font-medium uppercase mb-2">{{ getProducts01[getSelectedProduct].name }}</h2>
+                <h2 class="text-3xl font-medium uppercase mb-2">{{ selectedProducte()[0].name }}</h2>
                 <div class="space-y-2">
                     <p class="text-gray-800 font-semibold space-x-2">
                         <span>Availability: </span>
-                        <span class="text-green-600">{{ getProducts01[getSelectedProduct].stock }}</span>
+                        <span class="text-green-600">{{ selectedProducte()[0].stock }}</span>
                     </p>
                     <p class="space-x-2">
                         <span class="text-gray-800 font-semibold">Category: </span>
-                        <span class="text-gray-600">{{ getProducts01[getSelectedProduct].category }}</span>
+                        <span class="text-gray-600">{{ selectedProducte()[0].category }}</span>
                     </p>
                 </div>
-                <div class="flex items-baseline mb-1 space-x-2 font-roboto mt-4">
+                <div class="flex items-baseline mb-1 space-x-2 font-roboto mt-1">
                     <span class="text-gray-800 font-semibold">Price: </span>
-                    <p class="text-xl text-primary font-semibold">Tsh {{ getProducts01[getSelectedProduct].price }}</p>
+                    <p class="text-xl text-primary font-semibold">Tsh {{ selectedProducte()[0].price }}</p>
                 </div>
 
                 <!-- <p class="mt-4 text-gray-600">{{ Products[getSelectedProduct].description }}</p> -->
@@ -195,7 +195,7 @@
             <h3 class="border-b border-gray-200 font-roboto text-gray-800 pb-3 font-medium">Product details</h3>
             <div class="w-full md:w-3/5 pt-6">
                 <div class="text-gray-600">
-                    <p>{{ getProducts01[getSelectedProduct].description }}</p>
+                    <p>{{ selectedProducte()[0].description }}</p>
                 </div>
             </div>
         </div>
@@ -208,7 +208,7 @@
 
                 <!-- product -->
                 <div v-for="(product, index) of related" :key="index">
-                    <ProductBox @click="currentProduct(index, product.getCurrentCategory)" :imgPath="product.img"
+                    <ProductBox @click="currentProduct(product.id, product.getCurrentCategory)" :imgPath="product.img"
                         :name=product.name :price="product.price" :stock="product.stock" />
                 </div>
                 <!-- product end -->
@@ -241,10 +241,14 @@ const { getSelectedProduct, getCurrentCategory, getIsLoggedIn, getProducts01 } =
 
 const currentProduct = (index, getCurrentCategory) => {
     myStore.changeSelectedProduct(index, getCurrentCategory);
+    selectedProducte();
 }
 
-//  filtering products based on the current getCurrentCategory
+//  filtering related products based on the current getCurrentCategory
 const related = getProducts01.value.filter(p => p.category == getCurrentCategory.value)
+
+//  filtering  products based on their id
+const selectedProducte = () => getProducts01.value.filter(p => p.id == getSelectedProduct.value)
 
 onMounted(() => {
     myStore.getCart
@@ -280,11 +284,9 @@ const substract = () => {
     quantity.value--
 }
 
-// console.log('==================='+getProducts01.value[getSelectedProduct.value].img)
-// const imgPath = "CameraNikon.jpg";
 
 const getImgPath = () => {
-    return new URL('../assets/images/products/' + getProducts01.value[getSelectedProduct.value].img, import.meta.url)
+    return new URL('../assets/images/products/' + selectedProducte()[0].img, import.meta.url)
 }
 
 

@@ -12,7 +12,7 @@
         </div>
 
         <div  class="mt-6  bg-white  rounded p-4 divide-y divide-gray-200 space-y-4 text-gray-600">
-            <div  class="space-y-1 pl-8 ">
+            <div  class="space-y-4 pl-8 ">
                 <router-link to="/accountView/" class="relative text-primary block font-medium capitalize transition">
                     <span  class="absolute -left-8 top-0 text-base">
                         <i  class="fa-regular fa-address-card"></i>
@@ -22,7 +22,7 @@
                 <router-link to="/accountView/profileView" class="relative hover:text-primary block capitalize transition">
                     Profile information
                 </router-link>
-                <router-link to="#" class="relative hover:text-primary block capitalize transition">
+                <router-link to="/accountView/Address" class="relative hover:text-primary block capitalize transition">
                     Manage addresses
                 </router-link>
                 <router-link to="#" class="relative hover:text-primary block capitalize transition">

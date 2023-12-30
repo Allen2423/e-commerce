@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 
-
+                
                 <div class=" mt-5">
                     <label for="Postcode" class="text-gray-600 text-xl font-bold mb-3">Payment</label>
                     <select type="text" v-model="payment"  class="input-box w-[100%]  bg-slate-300 py-3 rounded px-2" placeholder="234535">
@@ -139,7 +139,7 @@ const houeNo = ref("");
 const payment = ref("");
 const validation = () => {
   const errors = {};
-
+  
   if (Region.value.trim() === '') {
     message.value = 'Please enter Region';
   }

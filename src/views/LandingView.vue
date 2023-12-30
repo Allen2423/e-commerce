@@ -1,7 +1,7 @@
 <template>
-<div>
+    <div>
 
-<!-- <head>
+        <!-- <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,17 +20,17 @@
     <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head> -->
 
-<div>
-    <!-- header -->
-    <Header/>
-    <!-- ./header -->
+        <div>
+            <!-- header -->
+            <Header />
+            <!-- ./header -->
 
-    <!-- navbar -->
-   <NavBar/>
-    <!-- ./navbar -->
+            <!-- navbar -->
+            <NavBar />
+            <!-- ./navbar -->
 
-    <!-- banner -->
-    <!-- <div class="bg-cover bg-no-repeat bg-center banner py-36">
+            <!-- banner -->
+            <!-- <div class="bg-cover bg-no-repeat bg-center banner py-36">
         <div class="container">
             <h1 class="text-5xl md:text-6xl text-gray-800 font-medium mb-4 capitalize">
                 Fanya biashara na <br> masha global link ltd
@@ -41,9 +41,9 @@
             </div>
         </div>
     </div> -->
-    <!-- ./banner -->
-    
-    <!-- features
+            <!-- ./banner -->
+
+            <!-- features
     <div class="container py-16 grid  grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         
         <router-link to="#">
@@ -79,94 +79,129 @@
             </router-link>
             
         </div> -->
-    </div>
-    <!-- ./features -->
+        </div>
+        <!-- ./features -->
 
-    <!-- categories -->
-    <div class="container py-16">
-        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">shop by category</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/products/shoes.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
-                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40  flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Raba</router-link>
+        <!-- categories -->
+        <div class="container py-16">
+            <div class="flex mb-6 justify-between">
+                <h2 class="text-2xl font-medium text-gray-800 uppercase">shop by category</h2>
+                <button @click="allProducts" class="px-3 py-2 bg-blue-500 text-white rounded">All Products</button>
             </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/products/pc.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
-                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Vifaa vya Electronic</router-link>
-            </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/products/OfficeShoes2.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
-                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Viatu Vya Ofisini</router-link>
-            </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/products/Sofa.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
-                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Vifaa Vya Nyumbani</router-link>
-            </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/products/pcBag.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
-                <router-link to="#" class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Bags</router-link>
-            </div>
-            <div class="relative rounded-sm overflow-hidden group">
-                <img src="../assets/images/products/watch3.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
-                <router-link to="#"
-                    class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Jewllery</router-link>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div @click="categoryFilter('shoes')" class="relative rounded-sm overflow-hidden group">
+                    <img src="../assets/images/products/shoes.jpg" alt="category 1"
+                        class="w-full object-cover max-h-[24em]">
+                    <div
+                        class="absolute inset-0 bg-blue-500 bg-opacity-40  flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
+                        Raba</div>
+                </div>
+                <div @click="categoryFilter('electronic')" class="relative rounded-sm overflow-hidden group">
+                    <img src="../assets/images/products/pc.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
+                    <div
+                        class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
+                        Vifaa vya Electronic</div>
+                </div>
+                <div @click="categoryFilter('perfume')" class="relative rounded-sm overflow-hidden group">
+                    <img src="../assets/images/products/perfume4.jpg" alt="category 1"
+                        class="w-full object-cover max-h-[24em]">
+                    <div
+                        class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
+                        Perfume</div>
+                </div>
+                <div @click="categoryFilter('home')" class="relative rounded-sm overflow-hidden group">
+                    <img src="../assets/images/products/Sofa.jpg" alt="category 1" class="w-full object-cover max-h-[24em]">
+                    <div
+                        class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
+                        Vifaa Vya Nyumbani</div>
+                </div>
+                <div @click="categoryFilter('bag')" class="relative rounded-sm overflow-hidden group">
+                    <img src="../assets/images/products/pcBag.jpg" alt="category 1"
+                        class="w-full object-cover max-h-[24em]">
+                    <div
+                        class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
+                        Bags</div>
+                </div>
+                <div @click="categoryFilter('jewlleries')" class="relative rounded-sm overflow-hidden group">
+                    <img src="../assets/images/products/watch3.jpg" alt="category 1"
+                        class="w-full object-cover max-h-[24em]">
+                    <div
+                        class="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">
+                        Jewllery</div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- ./categories -->
-    
-    <!-- new arrival -->
-    <div class="container pb-16">
-        <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6 dark:text-slate-400">Vilivyopo Dar</h2>
-        
-        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
-            
-            
-            <!-- product -->
-            <div v-for="(product, index) of getProducts01" :key="index">
-                <ProductBox @click="currentProduct(index,product.category)" :imgPath="product.img" :name=product.name :price="product.price" :stock="product.stock"/>
-            </div>
-            <!-- product end -->
-            
-        
-        </div>
-    </div>
-    <!-- ./new arrival -->
+        <!-- ./categories -->
 
-    <!-- footer -->
-    <Footer/>
-    <!-- ./footer -->
-</div>
+        <!-- new arrival -->
+        <div class="container pb-16">
+            <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6 dark:text-slate-400">Vilivyopo Dar</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 ">
+
+
+                <!-- product -->
+                <div v-for="(product, index) of related()" :key="index">
+                    <ProductBox @click="currentProduct(product.id, product.category)" :imgPath="product.img" :name=product.name
+                        :price="product.price" :stock="product.stock" />
+                </div>
+                <!-- product end -->
+
+
+            </div>
+        </div>
+        <!-- ./new arrival -->
+
+        <!-- footer -->
+        <Footer />
+        <!-- ./footer -->
+    </div>
 </template>
 
 <script setup>
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import Header from '../components/Header.vue';
-import Search from '../components/Search.vue';
 import ProductBox from '../components/ProductBox.vue';
 import router from '../router';
-// import Products from '../Api/Api.json'
-import Products from '../Api/Products.json';
+import { onMounted } from 'vue';
 import { useAppStore } from '../stores/Store';
 import { storeToRefs } from 'pinia';
 
 const myStore = useAppStore();
-const { getSelectedProduct, getProducts01} = storeToRefs(myStore);
+const { getSelectedProduct, getProducts01, filterCategory, getFilterCategory } = storeToRefs(myStore);
 
-const currentProduct = (index,category) => {
-    myStore.changeSelectedProduct(index,category);
+const currentProduct = (index, category) => {
+    myStore.changeSelectedProduct(index, category);
     router.push('/productView')
 }
+const categoryFilter = (category) => {
+    filterCategory.value = category;
+    related();
+}
 
-
+const allProducts = () => {
+    filterCategory.value = null
+    related();
+}
+onMounted(() => {
+    myStore.getFilterCategory
+    related();
+})
+//  filtering products based on the current getCurrentCategory
+const related = () => {
+    if (getFilterCategory.value == null) {
+        return getProducts01.value
+    }
+    else {
+        return getProducts01.value.filter(p => p.category == getFilterCategory.value)
+    }
+}
 
 </script>
 
-<style scoped>
-.banner{
+<style scoped>.banner {
     background-image: linear-gradient(to bottom right, rgba(8, 79, 233, 0.299), rgba(8, 94, 223, 0.39)), url('../assets/images/banner-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-}
-</style>
+}</style>
